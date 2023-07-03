@@ -1,7 +1,4 @@
-name: django
-
-# Add secrets to be used by different services. For more information:
-# https://docs.architect.io/deployments/secrets/
+name: django-development
 secrets:
   django_secret_key:
     default: warning-override-for-production
@@ -19,31 +16,24 @@ secrets:
   db_port:
     description: Port for the db
     default: 5432
-
-# Below are the configured services for the Django component. Note that the actual
-# Django application we're working on is defined as a service on line 37
-# For more info - https://docs.architect.io/components/services/
 services:
   app-db:
-    image: postgres:12
+    image: 'postgres:12'
     interfaces:
       database:
-        port: ${{ secrets.db_port }}
+        port: '${{ secrets.db_port }}'
         protocol: postgresql
     environment:
-      POSTGRES_USER: ${{ secrets.db_user }}
-      POSTGRES_PASSWORD: ${{ secrets.db_pass }}
-      POSTGRES_DB: ${{ secrets.db_name }}
+      POSTGRES_USER: '${{ secrets.db_user }}'
+      POSTGRES_PASSWORD: '${{ secrets.db_pass }}'
+      POSTGRES_DB: '${{ secrets.db_name }}'
     liveness_probe:
-      command: pg_isready -d ${{ secrets.db_name }} -U ${{ secrets.db_user }}
+      command: 'pg_isready -d ${{ secrets.db_name }} -U ${{ secrets.db_user }}'
       interval: 10s
       failure_threshold: 3
   app:
     depends_on:
-      # We want our app to start up after the db is running so that we can connect to it on startup!
-      # This block contains a list of services we need to start before 'app' starts.
       - app-db
-    # Build context is the location of your application relative to the architect.yml file
     build:
       context: .
     command: |
@@ -55,28 +45,20 @@ services:
     interfaces:
       main:
         port: 8000
-        # ingresses are used to expose the application to the gateway, allowing
-        #   other services and dependencies to connect to it.
-        #   For more info - https://docs.architect.io/components/interfaces/
         ingress:
           subdomain: app
-    # The liveness_probe makes sure the application is healthy - if not, it will re-start the application
     liveness_probe:
-      command: curl --fail 0.0.0.0:8000
+      command: 'curl --fail 0.0.0.0:8000'
       interval: 10s
       failure_threshold: 3
-    # Set environment variables for your application here
     environment:
-      ALLOWED_HOST: .${{ services.app.interfaces.main.ingress.host }}
-      SECRET_KEY: ${{ secrets.django_secret_key }}
-      POSTGRES_DB: ${{ services.app-db.environment.POSTGRES_DB }}
-      POSTGRES_USER: ${{ services.app-db.environment.POSTGRES_USER }}
-      POSTGRES_PASSWORD: ${{ services.app-db.environment.POSTGRES_PASSWORD }}
-      POSTGRES_HOST: ${{ services.app-db.interfaces.database.host }}
-      POSTGRES_PORT: ${{ services.app-db.interfaces.database.port }}
-    # Debug block is used to enable hot-reloading to make real-time changes to an
-    #   application while running `architect dev`. For more info, see -
-    #   https://docs.architect.io/components/local-configuration/#hot-reloading
+      ALLOWED_HOST: '.${{ services.app.interfaces.main.ingress.host }}'
+      SECRET_KEY: '${{ secrets.django_secret_key }}'
+      POSTGRES_DB: '${{ services.app-db.environment.POSTGRES_DB }}'
+      POSTGRES_USER: '${{ services.app-db.environment.POSTGRES_USER }}'
+      POSTGRES_PASSWORD: '${{ services.app-db.environment.POSTGRES_PASSWORD }}'
+      POSTGRES_HOST: '${{ services.app-db.interfaces.database.host }}'
+      POSTGRES_PORT: '${{ services.app-db.interfaces.database.port }}'
     debug:
       liveness_probe:
         initial_delay: 15s
@@ -86,8 +68,8 @@ services:
           python manage.py runserver 0.0.0.0:8000
         '
       environment:
-        ALLOWED_HOST: "*"
-        DEBUG: "True"
+        ALLOWED_HOST: '*'
+        DEBUG: 'True'
       volumes:
         app:
           host_path: .
