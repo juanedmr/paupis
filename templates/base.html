@@ -1,0 +1,27 @@
+{% load static %}
+
+<html lang="en">
+  <head>
+    <title>Django App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link rel="icon" href="/static/favicon.ico" />
+  </head>
+  <body>
+    <div class="container">
+      <p align="center" class="logo">
+        <a href="//architect.io" target="blank">
+          <img
+            src="https://cdn.architect.io/logo/horizontal.png"
+            width="320"
+            alt="Architect Logo"
+          />
+        </a>
+      </p>
+      {% block body %}{% endblock %}
+    </div>
+  </body>
+</html>
