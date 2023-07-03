@@ -66,6 +66,8 @@ DATABASES = {
 }
 
 INSTALLED_APPS = [
+  'polls.apps.PollsConfig',
+  'route.apps.RouteConfig',
   'movies.apps.MoviesConfig',
   'django.contrib.auth',
   'django.contrib.contenttypes',
