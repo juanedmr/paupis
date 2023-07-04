@@ -1,8 +1,12 @@
+import os
 from django.urls import include, path, re_path
 from django.views.static import serve
 from . import views
 
 app_name = 'movies'
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SITE_ROOT = os.path.join(BASE_DIR, 'demo')
 
 urlpatterns = [
   path('', views.HomeView.as_view(), name='home'),
