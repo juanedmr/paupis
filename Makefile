@@ -9,4 +9,19 @@ run:
 	python manage.py runserver
 
 createuser:
-    python manage.py createsuperuser
+	python manage.py createsuperuser
+
+migrate:
+	python manage.py makemigrations
+
+migrate:
+	python manage.py migrate
+
+build:
+	docker build . -t mysite
+
+run-docker:
+	docker run -p 8080:8000 mysite
+
+venv:
+	source ~/.django/bin/activate

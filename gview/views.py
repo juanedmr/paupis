@@ -1,9 +1,41 @@
 from gview.models import Cat, Dog, Horse, Car
 
+from django.http import HttpResponse
 from django.views import View
 from django.shortcuts import render
 
 # Create your views here.
+def run() :
+        Cat.objects.all().delete()
+        Dog.objects.all().delete()
+        Horse.objects.all().delete()
+        Car.objects.all().delete()
+
+        x = Cat(name='Sophie')
+        x.save()
+        x = Cat(name='Frankie')
+        x.save()
+
+        x = Dog(name='Shelby')
+        x.save()
+        x = Dog(name='Luna')
+        x.save()
+
+        x = Horse(name='Penny')
+        x.save()
+        x = Horse(name='Bravo')
+        x.save()
+
+        x = Car(name='SakaiCar')
+        x.save()
+        x = Car(name='Subaru')
+        x.save()
+
+class ChargeDataView(View):
+    
+    def get(self,request):
+        run()
+        return HttpResponse("Data uploaded")
 
 class CatListView(View):
     def get(self, request) :

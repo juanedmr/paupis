@@ -1,4 +1,5 @@
 import os
+from django.contrib import admin
 from django.urls import include, path, re_path
 from django.views.static import serve
 from . import views
@@ -9,6 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE_ROOT = os.path.join(BASE_DIR, 'demo')
 
 urlpatterns = [
+  path('admin/', admin.site.urls),
   path('', views.HomeView.as_view(), name='home'),
   path('polls/', include('polls.urls')),
   path('route/', include('route.urls')),
