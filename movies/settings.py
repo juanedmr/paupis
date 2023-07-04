@@ -67,6 +67,7 @@ DATABASES = {
 
 INSTALLED_APPS = [
   'polls.apps.PollsConfig',
+  'gview.apps.GviewConfig',
   'route.apps.RouteConfig',
   'movies.apps.MoviesConfig',
   'django.contrib.auth',

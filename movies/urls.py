@@ -12,6 +12,7 @@ urlpatterns = [
   path('', views.HomeView.as_view(), name='home'),
   path('polls/', include('polls.urls')),
   path('route/', include('route.urls')),
+  path('gview/', include('gview.urls')),
   re_path(r'^demo/(?P<path>.*)$', serve,
         {'document_root': SITE_ROOT, 'show_indexes': True},
         name='site_path'
