@@ -39,6 +39,7 @@ services:
     command: |
       sh -c '
         python manage.py migrate --noinput
+        DJANGO_SUPERUSER_USERNAME=admin DJANGO_SUPERUSER_EMAIL=admin@example.com DJANGO_SUPERUSER_PASSWORD=secret
         python manage.py createsuperuser --noinput
         uwsgi --http "0.0.0.0:8000" --module movies.wsgi:application --master --processes 4 --threads 2
       '
