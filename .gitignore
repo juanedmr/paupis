@@ -129,6 +129,5 @@ dmypy.json
 .pyre/
 
 #local deploy
-/movies/settings.py
-/movies/wsgi.py
+
 /staticfiles
