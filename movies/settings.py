@@ -70,6 +70,7 @@ INSTALLED_APPS = [
   'gview.apps.GviewConfig',
   'route.apps.RouteConfig',
   'movies.apps.MoviesConfig',
+  'django.contrib.admin',
   'django.contrib.auth',
   'django.contrib.contenttypes',
   'django.contrib.sessions',
