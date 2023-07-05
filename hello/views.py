@@ -8,7 +8,7 @@ from django.urls import reverse
 def cookies(request):
     num_visits = request.session.get('num_visits', 0) + 1
     request.session['num_visits'] = num_visits
-    resp = HttpResponse('you have been here '+str(num_visits)+' times and your cookies are: '+str(request.COOKIES))
+    resp = HttpResponse('view count='+str(num_visits))
     resp.set_cookie('dj4e_cookie', '7ae738bc', max_age=1000)
     resp.set_cookie('chocolate','hash')
     return resp

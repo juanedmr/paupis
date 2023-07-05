@@ -8,7 +8,7 @@ from django.urls import reverse
 from .models import Choice,Question
 
 def owner(request):
-       return HttpResponse("Hello, world. b7f3b8bc is the polls index.")
+       return HttpResponse("Hello, world. b7f3b8bc is the polls index. 7ae738bc")
 
 
 # def index(request):
