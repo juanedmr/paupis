@@ -16,6 +16,15 @@ secrets:
   db_port:
     description: Port for the db
     default: 5432
+  django_admin_user:
+    description: Admin username
+    default: admin
+  django_admin_password:
+    description: Password for the admin user
+    default: secret
+  django_admin_email:
+    description: Email for the admin user
+    default: admin@gmail.com
 services:
   app-db:
     image: 'postgres:12'
@@ -39,7 +48,6 @@ services:
     command: |
       sh -c '
         python manage.py migrate --noinput
-        DJANGO_SUPERUSER_USERNAME=admin DJANGO_SUPERUSER_EMAIL=admin@example.com DJANGO_SUPERUSER_PASSWORD=secret
         python manage.py createsuperuser --noinput
         uwsgi --http "0.0.0.0:8000" --module movies.wsgi:application --master --processes 4 --threads 2
       '
@@ -60,6 +68,9 @@ services:
       POSTGRES_PASSWORD: '${{ services.app-db.environment.POSTGRES_PASSWORD }}'
       POSTGRES_HOST: '${{ services.app-db.interfaces.database.host }}'
       POSTGRES_PORT: '${{ services.app-db.interfaces.database.port }}'
+      DJANGO_SUPERUSER_EMAIL: '${{ secrets.django_admin_email}}'
+      DJANGO_SUPERUSER_PASSWORD: '${{ secrets.django_admin_password }}'
+      DJANGO_SUPERUSER_USERNAME: '${{ secrets.django_admin_user}}'
     debug:
       liveness_probe:
         initial_delay: 15s
