@@ -11,10 +11,10 @@ run:
 createuser:
 	python manage.py createsuperuser
 
-migrate:
+migrate1:
 	python manage.py makemigrations
 
-migrate:
+migrate2:
 	python manage.py migrate
 
 build:

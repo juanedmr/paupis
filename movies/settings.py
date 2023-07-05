@@ -66,6 +66,8 @@ DATABASES = {
 }
 
 INSTALLED_APPS = [
+  'hello.apps.HelloConfig',
+  'home.apps.HomeConfig',
   'polls.apps.PollsConfig',
   'gview.apps.GviewConfig',
   'route.apps.RouteConfig',

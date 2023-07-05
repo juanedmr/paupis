@@ -32,7 +32,6 @@ def run() :
         x.save()
 
 class ChargeDataView(View):
-    
     def get(self,request):
         run()
         return HttpResponse("Data uploaded")
