@@ -67,6 +67,7 @@ DATABASES = {
 
 INSTALLED_APPS = [
   'hello.apps.HelloConfig',
+  'authz.apps.AuthzConfig',
   'home.apps.HomeConfig',
   'polls.apps.PollsConfig',
   'gview.apps.GviewConfig',

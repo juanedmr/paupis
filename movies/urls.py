@@ -12,6 +12,8 @@ SITE_ROOT = os.path.join(BASE_DIR, 'demo')
 
 urlpatterns = [
   path('admin/', admin.site.urls),
+  path("accounts/", include("django.contrib.auth.urls")),
+  path('authz/', include('authz.urls')),
   path('', TemplateView.as_view(template_name='home/main.html')),
   path('movies/', views.HomeView.as_view(), name='home'),
   path('polls/', include('polls.urls')),
