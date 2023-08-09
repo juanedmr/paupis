@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'warning-override-for-production')
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']#['localhost', '0.0.0.0', 'https://app.localhost.architect.sh', os.environ.get('ALLOWED_HOST', '')]
+ALLOWED_HOSTS = ['localhost', '0.0.0.0', 'https://app.localhost.architect.sh', os.environ.get('ALLOWED_HOST', '')] #['*']
 
 CSRF_TRUSTED_ORIGINS = ['https://*.localhost.architect.sh/','https://*.127.0.0.1']
 
@@ -68,6 +68,7 @@ DATABASES = {
 INSTALLED_APPS = [
   'hello.apps.HelloConfig',
   'authz.apps.AuthzConfig',
+  'autos.apps.AutosConfig',
   'home.apps.HomeConfig',
   'polls.apps.PollsConfig',
   'gview.apps.GviewConfig',
