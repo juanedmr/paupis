@@ -25,3 +25,6 @@ run-docker:
 
 venv:
 	source ~/.django/bin/activate
+
+runcat:
+	python manage.py runscript cats_load

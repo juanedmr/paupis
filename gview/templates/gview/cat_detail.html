@@ -1,9 +1,10 @@
 <h1>Cat {{ cat.name }}</h1>
 <p>
+    <p>This cat is {{cat.breed.name}} and weights {{cat.weight}} kg</p>
 <a href="{% url 'gview:cats' %}">Go back to list</a>
 </p>
 <p>
-<img src="https://loremflickr.com/160/120/cat" 
+<img src="https://loremflickr.com/160/120/{{cat.breed.name}}_cat" 
     alt="A random picture of a cat">
 </p>
 
