@@ -1,6 +1,14 @@
-Django==4.1.1
-psycopg2==2.9.3
+
+psycopg2
 uwsgi==2.0.20
 requests==2.28.1
 whitenoise>=6.2.0
+Django
+django-crispy-forms
+django-filter
+djangorestframework
+Markdown
+social-auth-app-django
+social-auth-core
 django-extensions
+django-taggit

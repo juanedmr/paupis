@@ -20,6 +20,9 @@ import os
 
 STATIC_URL = '/static/'
 
+# Used for a default title
+APP_NAME = 'Hello mundo '
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
@@ -70,6 +73,7 @@ INSTALLED_APPS = [
   'authz.apps.AuthzConfig',
   'autos.apps.AutosConfig',
   'home.apps.HomeConfig',
+  'ads.apps.AdsConfig',
   'polls.apps.PollsConfig',
   'gview.apps.GviewConfig',
   'route.apps.RouteConfig',
@@ -81,7 +85,9 @@ INSTALLED_APPS = [
   'django.contrib.sessions',
   'django.contrib.messages',
   'django.contrib.staticfiles',
-  'django_extensions'
+  'django_extensions',
+  'crispy_forms',
+  'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -111,3 +117,19 @@ TEMPLATES = [
   },
 ]
 
+import logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
