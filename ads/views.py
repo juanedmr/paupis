@@ -1,6 +1,13 @@
 from ads.models import Ad
-from ads.owner import OwnerListView, OwnerDetailView, OwnerCreateView, OwnerUpdateView, OwnerDeleteView
+from ads.owner import (
+    OwnerListView,
+    OwnerDetailView,
+    OwnerCreateView,
+    OwnerUpdateView,
+    OwnerDeleteView,
+)
 from django.http import HttpResponse
+
 
 class AdListView(OwnerListView):
     model = Ad
@@ -11,14 +18,16 @@ class AdListView(OwnerListView):
 class AdDetailView(OwnerDetailView):
     model = Ad
 
+
 class AdCreateView(OwnerCreateView):
     model = Ad
     # List the fields to copy from the Article model to the Article form
-    fields = ['title', 'text']
+    fields = ["title", "text", "price"]
+
 
 class AdUpdateView(OwnerUpdateView):
     model = Ad
-    fields = ['title', 'text']
+    fields = ["title", "text", "price"]
     # This would make more sense
     # fields_exclude = ['owner', 'created_at', 'updated_at']
 
