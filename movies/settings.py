@@ -88,6 +88,7 @@ INSTALLED_APPS = [
   'django_extensions',
   'crispy_forms',
   'django.contrib.humanize',
+  'CRISPY_TEMPLATE_PACK'
 ]
 
 MIDDLEWARE = [
