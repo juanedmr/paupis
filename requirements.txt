@@ -12,4 +12,4 @@ social-auth-app-django
 social-auth-core
 django-extensions
 django-taggit
-crispy-bootstrap4
+
