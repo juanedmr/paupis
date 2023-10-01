@@ -75,7 +75,7 @@ class AdUpdateView(LoginRequiredMixin, View):
 
         ad = form.save(commit=False)
         ad.save()
-
+        print(request.META)
         return redirect(self.success_url,request)
 
 class AdDeleteView(OwnerDeleteView):
