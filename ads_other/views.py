@@ -44,12 +44,15 @@ class AdCreateView(LoginRequiredMixin, View):
         if not form.is_valid() :
             ctx = {'form' : form}
             return render(request, self.template_name, ctx)
-
+        print(request.POST)
         # Add owner to the model before saving
         ad = form.save(commit=False)
         ad.owner = self.request.user
         ad.save()
-        return redirect(self.success_url)
+        return redirect(self.success_url,request)
+    
+    
+        
 
 
 class AdUpdateView(LoginRequiredMixin, View):
@@ -72,8 +75,8 @@ class AdUpdateView(LoginRequiredMixin, View):
 
         ad = form.save(commit=False)
         ad.save()
-
-        return redirect(self.success_url)
+        print(request.META)
+        return redirect(self.success_url,request)
 
 class AdDeleteView(OwnerDeleteView):
     model = Ad
