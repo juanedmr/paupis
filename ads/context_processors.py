@@ -1,5 +1,5 @@
 from django.conf import settings
 
 def cp_setting(request):
-    print(settings)
+    #print(settings)
     return {"settings": settings}
