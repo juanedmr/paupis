@@ -9,5 +9,5 @@ def cp_setting(request):
 def csrf_failure(request, reason=""):
     #ctx = {'content': request.POST, "message": request.COOKIES, "meta":request.META,"body":request.body}
     ctx={'content': request.POST, "message": request.COOKIES}
-    'content': request.POST, "message": request.COOKIES
+    print(request.META[settings.CSRF_HEADER_NAME])
     return JsonResponse(ctx)
