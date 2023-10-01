@@ -31,11 +31,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "warning-override-for-production")
 
-ALLOWED_HOSTS = ["*"]  # ['localhost', '0.0.0.0', 'https://app.localhost.architect.sh', os.environ.get('ALLOWED_HOST', '')] #['*']
+ALLOWED_HOSTS =  ['localhost', '0.0.0.0', 'https://app.localhost.architect.sh', os.environ.get('ALLOWED_HOST', '')] #['*']
 
-CSRF_TRUSTED_ORIGINS = ['*'] #["https://*.localhost.architect.sh/", "https://*.127.0.0.1"]
+ALLOWED_HOSTS = ['*']
 
-CSRF_COOKIE_DOMAIN=None
+#CSRF_TRUSTED_ORIGINS = ["https://*.localhost.architect.sh/", "https://*.127.0.0.1:8000"]
 
 DEBUG=True
 
@@ -97,7 +97,7 @@ INSTALLED_APPS = [
     'rest_framework', 
     'social_django',  
     'taggit',
-    #'crispy_bootstrap4'
+    'crispy_bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -131,19 +131,19 @@ TEMPLATES = [
     },
 ]
 
-import logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
-        },
-    },
-}
+# import logging
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console'],
+#             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+#         },
+#     },
+# }
