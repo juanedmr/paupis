@@ -1,24 +1,24 @@
-from ads.models import Ad, Comment
-from ads.owner import (
-    OwnerListView,
-    OwnerDetailView,
-    OwnerCreateView,
-    OwnerUpdateView,
-    OwnerDeleteView,
-)
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from django.urls import reverse,reverse_lazy
-from ads.forms import CreateForm,CommentForm
 from django.views import View
-from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
+from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from django.core.files.uploadedfile import InMemoryUploadedFile
+
+from ads.owner import OwnerListView, OwnerDetailView, OwnerCreateView, OwnerUpdateView, OwnerDeleteView
+from django.views import View
+from django.views import generic
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+
+from ads.models import Ad, Comment
+from ads.forms import CreateForm
+from ads.forms import CommentForm
 
 class AdListView(OwnerListView):
     model = Ad
-    # By convention:
-    # template_name = "ads/ads_list.html"
-
+    template_name = "ads/ad_list.html"
 
 class AdDetailView(OwnerDetailView):
     model = Ad
@@ -30,71 +30,56 @@ class AdDetailView(OwnerDetailView):
         context = { 'ad' : x, 'comments': comments, 'comment_form': comment_form }
         return render(request, self.template_name, context)
 
-
-# class AdCreateView(OwnerCreateView):
-#     model = Ad
-#     # List the fields to copy from the Article model to the Article form
-#     fields = ["title", "text", "price"]
-
-
 class AdCreateView(LoginRequiredMixin, View):
     template_name = 'ads/ad_form.html'
     success_url = reverse_lazy('ads:all')
-    #print(success_url)
-    def get(self, request, pk=None):
+    def get(self, request, pk=None) :
         form = CreateForm()
-        ctx = {'form': form}
+        ctx = { 'form': form }
         return render(request, self.template_name, ctx)
 
-    def post(self, request, pk=None):
+    def post(self, request, pk=None) :
         form = CreateForm(request.POST, request.FILES or None)
-        print(request.POST)
-        if not form.is_valid():
-            ctx = {'form': form}
+
+        if not form.is_valid() :
+            ctx = {'form' : form}
             return render(request, self.template_name, ctx)
 
         # Add owner to the model before saving
-        pic = form.save(commit=False)
-        pic.owner = self.request.user
-        pic.save()
+        ad = form.save(commit=False)
+        ad.owner = self.request.user
+        ad.save()
         return redirect(self.success_url)
-        #return render(request, self.template_success)
-
-
-# class AdUpdateView(OwnerUpdateView):
-#     model = Ad
-#     fields = ["title", "text", "price"]
-#     # This would make more sense
-#     # fields_exclude = ['owner', 'created_at', 'updated_at']
 
 
 class AdUpdateView(LoginRequiredMixin, View):
-    template_name = 'ads/form.html'
+    model = Ad
+    template_name = "ads/ad_form.html"
     success_url = reverse_lazy('ads:all')
-
-    def get(self, request, pk):
-        pic = get_object_or_404(Ad, id=pk, owner=self.request.user)
-        form = CreateForm(instance=pic)
-        ctx = {'form': form}
+    def get(self, request, pk) :
+        ad = get_object_or_404(Ad, id=pk, owner=self.request.user)
+        form = CreateForm(instance=ad)
+        ctx = { 'form': form }
         return render(request, self.template_name, ctx)
 
-    def post(self, request, pk=None):
-        pic = get_object_or_404(Ad, id=pk, owner=self.request.user)
-        form = CreateForm(request.POST, request.FILES or None, instance=pic)
+    def post(self, request, pk=None) :
+        ad = get_object_or_404(Ad, id=pk, owner=self.request.user)
+        form = CreateForm(request.POST, request.FILES or None, instance=ad)
 
-        if not form.is_valid():
-            ctx = {'form': form}
+        if not form.is_valid() :
+            ctx = {'form' : form}
             return render(request, self.template_name, ctx)
 
-        pic = form.save(commit=False)
-        pic.save()
+        ad = form.save(commit=False)
+        ad.save()
 
         return redirect(self.success_url)
 
 class AdDeleteView(OwnerDeleteView):
     model = Ad
+    template_name = "ads/ad_confirm_delete.html"
 
-def stream_file(request, pk):
+def stream_file(request, pk) :
     ad = get_object_or_404(Ad, id=pk)
     response = HttpResponse()
     response['Content-Type'] = ad.content_type
@@ -115,5 +100,5 @@ class CommentDeleteView(OwnerDeleteView):
 
     # https://stackoverflow.com/questions/26290415/deleteview-with-a-dynamic-success-url-dependent-on-id
     def get_success_url(self):
-        forum = self.object.ad
-        return reverse('ads:ad_detail', args=[forum.id])
+        ad = self.object.ad
+        return reverse('ads:ad_detail', args=[ad.id])
