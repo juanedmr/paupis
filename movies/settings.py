@@ -97,7 +97,7 @@ INSTALLED_APPS = [
     'rest_framework', 
     'social_django',  
     'taggit',
-    'crispy_bootstrap4'
+    #'crispy_bootstrap4'
 ]
 
 MIDDLEWARE = [
