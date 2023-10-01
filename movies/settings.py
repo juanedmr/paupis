@@ -37,7 +37,7 @@ ALLOWED_HOSTS = [
     "*"
 ]  # ['localhost', '0.0.0.0', 'https://app.localhost.architect.sh', os.environ.get('ALLOWED_HOST', '')] #['*']
 
-CSRF_TRUSTED_ORIGINS = ["https://*.localhost.architect.sh/", "https://*.127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ['*'] #["https://*.localhost.architect.sh/", "https://*.127.0.0.1"]
 
 USE_X_FORWARDED_HOST = True
 
