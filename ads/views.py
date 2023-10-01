@@ -12,7 +12,7 @@ from django.http import HttpResponse
 from django.urls import reverse,reverse_lazy
 from ads.forms import CreateForm,CommentForm
 from django.views import View
-
+from django.views.decorators.csrf import csrf_exempt
 
 class AdListView(OwnerListView):
     model = Ad
@@ -35,6 +35,7 @@ class AdDetailView(OwnerDetailView):
 #     model = Ad
 #     # List the fields to copy from the Article model to the Article form
 #     fields = ["title", "text", "price"]
+
 
 class AdCreateView(LoginRequiredMixin, View):
     template_name = 'ads/ad_form.html'
@@ -65,6 +66,7 @@ class AdCreateView(LoginRequiredMixin, View):
 #     fields = ["title", "text", "price"]
 #     # This would make more sense
 #     # fields_exclude = ['owner', 'created_at', 'updated_at']
+
 
 class AdUpdateView(LoginRequiredMixin, View):
     template_name = 'ads/form.html'
