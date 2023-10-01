@@ -35,6 +35,10 @@ ALLOWED_HOSTS = ["*"]  # ['localhost', '0.0.0.0', 'https://app.localhost.archite
 
 CSRF_TRUSTED_ORIGINS = ['*'] #["https://*.localhost.architect.sh/", "https://*.127.0.0.1"]
 
+CSRF_COOKIE_DOMAIN=None
+
+DEBUG=True
+
 USE_X_FORWARDED_HOST = True
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
@@ -101,7 +105,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    #"django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
