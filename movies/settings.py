@@ -35,7 +35,9 @@ ALLOWED_HOSTS =  ['localhost', '0.0.0.0', 'https://app.localhost.architect.sh', 
 
 ALLOWED_HOSTS = ['*']
 
-#CSRF_TRUSTED_ORIGINS = ["https://*.localhost.architect.sh/", "https://*.127.0.0.1:8000"]
+CSRF_TRUSTED_ORIGINS = ["https://*.localhost.architect.sh/", "https://*.127.0.0.1:8000", "https://*.www.dj4e.com/"]
+
+CSRF_FAILURE_VIEW = 'ads.context_processors.csrf_failure'
 
 DEBUG=True
 
