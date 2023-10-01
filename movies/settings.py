@@ -31,11 +31,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "warning-override-for-production")
 
-ALLOWED_HOSTS = ['localhost', '0.0.0.0', 'https://app.localhost.architect.sh', os.environ.get('ALLOWED_HOST', '')] #['*']
-
-ALLOWED_HOSTS = [
-    "*"
-]  # ['localhost', '0.0.0.0', 'https://app.localhost.architect.sh', os.environ.get('ALLOWED_HOST', '')] #['*']
+ALLOWED_HOSTS = ["*"]  # ['localhost', '0.0.0.0', 'https://app.localhost.architect.sh', os.environ.get('ALLOWED_HOST', '')] #['*']
 
 CSRF_TRUSTED_ORIGINS = ['*'] #["https://*.localhost.architect.sh/", "https://*.127.0.0.1"]
 
@@ -105,7 +101,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
+    #"django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
