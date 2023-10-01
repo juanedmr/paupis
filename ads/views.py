@@ -50,6 +50,8 @@ class AdCreateView(LoginRequiredMixin, View):
         ad.owner = self.request.user
         ad.save()
         return redirect(self.success_url,request)
+    
+    
         
 
 
