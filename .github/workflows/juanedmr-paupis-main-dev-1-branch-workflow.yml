@@ -11,9 +11,9 @@ env:
   COMPONENT_FILE_PATH: architect.yml
   ARCHITECT_ACCOUNT: juanedmr
   COMPONENT_NAME: paupis
-  ENVIRONMENT_NAME: develop
+  ENVIRONMENT_NAME: dev-1
   BRANCH_NAME: main
-  CLUSTER_NAME: cluster2
+  CLUSTER_NAME: architect
 
 jobs:
   architect_create_branch_deployments:
