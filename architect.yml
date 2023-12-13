@@ -1,3 +1,4 @@
+
 name: paupis
 secrets:
   django_secret_key:
