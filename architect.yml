@@ -1,4 +1,4 @@
-name: django-development
+name: paupis
 secrets:
   django_secret_key:
     default: warning-override-for-production
