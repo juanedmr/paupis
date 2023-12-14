@@ -21,7 +21,7 @@ import os
 STATIC_URL = "/static/"
 
 # Used for a default title
-APP_NAME = "Hello mundo "
+APP_NAME = "Paupis World"
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
