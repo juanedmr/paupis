@@ -1,10 +1,16 @@
 
+
 {% extends "base_menu.html" %}
+{% load static %} 
 {% block content %}
     <h1>Welcome to {{ settings.APP_NAME }}</h1>
     <p>
-    Hello world.
+    This is Paupis incredible page, o en español esta es la página especial e increíble para Paupis.
     </p>
+    
+    <img src="{% static 'alice.gif' %}" 
+    alt="A random picture of a cat">
+</p>
 {% endblock content %}
 
 <!-- <ul>

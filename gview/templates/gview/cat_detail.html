@@ -1,3 +1,8 @@
+{% extends "base_menu.html" %}
+{% block title %}{{ settings.APP_NAME }}{% endblock %}
+
+{% block content %}
+
 <h1>Cat {{ cat.name }}</h1>
 <p>
     <p>This cat is {{cat.breed.name}} and weights {{cat.weight}} kg</p>
@@ -8,3 +13,4 @@
     alt="A random picture of a cat">
 </p>
 
+{% endblock %}

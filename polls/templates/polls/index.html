@@ -2,6 +2,7 @@
 {% block title %}{{ settings.APP_NAME }}{% endblock %}
 {% block content %}
 {% if latest_question_list %}
+<h1>Questions</h1>
     <ul>
     {% for question in latest_question_list %}
         <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>

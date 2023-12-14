@@ -12,14 +12,14 @@
 
       <ul class="nav navbar-nav">
         {% url 'ads' as ads %}
-        <li {% if request.get_full_path == ads %}class="active"{% endif %}>
-            <a href="{% url 'ads:all' %}">Content</a></li>
-            {% url 'cats' as cats %}
-        <li {% if request.get_full_path == cats %}class="active"{% endif %}>
-            <a href="{% url 'cats:all' %}">Cats</a></li>
-            {% url 'polls' as polls %}
-            <li {% if request.get_full_path == polls %}class="active"{% endif %}>
-                <a href="{% url 'polls:all' %}">Questions</a></li>
+      <li {% if request.get_full_path == ads %}class="active"{% endif %}>
+          <a href="{% url 'ads:all' %}">Content</a></li>
+          {% url 'gview' as gview %}
+      <li {% if request.get_full_path == gview %}class="active"{% endif %}>
+          <a href="{% url 'gview:cats' %}">Cats</a></li>
+          {% url 'polls' as polls %}
+          <li {% if request.get_full_path == polls %}class="active"{% endif %}>
+              <a href="{% url 'polls:all' %}">Questions</a></li>
       </ul>
 </ul>
 
