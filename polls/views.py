@@ -41,7 +41,7 @@ class FormView(View):
     def get(self, request, pk) :
         qn = get_object_or_404(Question, id=pk)
         form = CreateForm(instance=qn)
-        ctx = { 'form': form , 'question':qn.question_text}
+        ctx = { 'form': form , 'question':qn.question_text, 'qid':pk}
         return render(request, self.template_name, ctx)
 
     def post(self, request, pk=None) :
