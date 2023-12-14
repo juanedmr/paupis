@@ -24,7 +24,7 @@ run-docker:
 	docker run -p 8080:8000 mysite
 
 venv:
-	source ~/.django/bin/activate
+	source ~/.paupis/bin/activate
 
 runcat:
 	python manage.py runscript cats_load

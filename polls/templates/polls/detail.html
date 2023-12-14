@@ -1,3 +1,7 @@
+{% extends 'ads/base_menu.html' %}
+{% block title %}{{ settings.APP_NAME }}{% endblock %}
+{% block content %}
+
 <form action="{% url 'polls:vote' question.id %}" method="post">
     {% csrf_token %}
     <fieldset>
@@ -12,3 +16,5 @@
     </fieldset>
     <input type="submit" value="Vote">
 </form>
+
+{% endblock %}
