@@ -1,0 +1,33 @@
+{% extends 'ads/base_menu.html' %}
+{% block title %}{{ settings.APP_NAME }}{% endblock %}
+{% load humanize %} <!-- https://docs.djangoproject.com/en/3.0/ref/contrib/humanize -->
+
+{% block head %}
+<style>
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: none;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<h1>{{ question.question_text }}</h1>
+{% if question.answer %}
+<p>La respuesta de Paupis fue {{question.answer}}</p>
+{% else %}
+  <p>Paupis no ha contestado</p>
+{% endif %}
+<br>
+<a href="{% url 'polls:answer' question.id%}">Contestar pregunta</a>
+{% endblock %}

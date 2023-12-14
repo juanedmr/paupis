@@ -48,10 +48,6 @@
 
 
 <p>
-{{ ad.price }}
-</p>
-
-<p>
 ({{ ad.updated_at|naturaltime }})
 </p>
 {% if user.is_authenticated %}
@@ -62,7 +58,7 @@
     {% csrf_token %}
     {{ comment_form|crispy }}
 <input type="submit" value="Submit" class="btn btn-primary ">
-<input type="submit" value="All Ads" class="btn btn-default " onclick="window.location.href='{% url 'ads:all' %}';return false;">
+<input type="submit" value="All Paupis" class="btn btn-default " onclick="window.location.href='{% url 'ads:all' %}';return false;">
 </form>
 </p>
 

@@ -1,0 +1,101 @@
+[
+  {
+    "model": "polls.question",
+    "pk": 1,
+    "fields": {
+      "question_text": "¿Calor o frío?",
+      "label": "Clima",
+      "answer": ""
+    }
+  },
+  {
+    "model": "polls.question",
+    "pk": 2,
+    "fields": {
+      "question_text": "¿Color favorito?",
+      "label": "Colores",
+      "answer": ""
+    }
+  },
+  {
+    "model": "polls.question",
+    "pk": 3,
+    "fields": {
+      "question_text": "¿Película favorita?",
+      "label": "Movies",
+      "answer": ""
+    }
+  },
+  {
+    "model": "polls.question",
+    "pk": 4,
+    "fields": {
+      "question_text": "¿Pintor favorito?",
+      "label": "Pintemos",
+      "answer": ""
+    }
+  },
+  {
+    "model": "polls.question",
+    "pk": 5,
+    "fields": {
+      "question_text": "¿Lugar que te encantaría visitar?",
+      "label": "Places to be",
+      "answer": ""
+    }
+  },
+  {
+    "model": "polls.question",
+    "pk": 6,
+    "fields": {
+      "question_text": "¿Dulce Favorito?",
+      "label": "Dulces",
+      "answer": "M&M"
+    }
+  },
+  {
+    "model": "polls.question",
+    "pk": 7,
+    "fields": {
+      "question_text": "¿Número favorito?",
+      "label": "Números",
+      "answer": ""
+    }
+  },
+  {
+    "model": "polls.question",
+    "pk": 8,
+    "fields": {
+      "question_text": "¿Quieres ser mi novia?",
+      "label": "Ocho pinocho",
+      "answer": ""
+    }
+  },
+  {
+    "model": "polls.question",
+    "pk": 9,
+    "fields": {
+      "question_text": "¿Pan dulce preferido?",
+      "label": "Panesito",
+      "answer": ""
+    }
+  },
+  {
+    "model": "polls.question",
+    "pk": 10,
+    "fields": {
+      "question_text": "¿Perros o gatos?",
+      "label": "Macotas",
+      "answer": ""
+    }
+  },
+  {
+    "model": "polls.question",
+    "pk": 11,
+    "fields": {
+      "question_text": "¿Película favorita?",
+      "label": "Movies",
+      "answer": ""
+    }
+  }
+]

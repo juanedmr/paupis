@@ -50,6 +50,7 @@ services:
       sh -c '
         python manage.py migrate --noinput
         python manage.py runscript cats_load
+        python manage.py loaddata questions
         python manage.py createsuperuser --noinput
         uwsgi --http "0.0.0.0:8000" --module movies.wsgi:application --master --processes 4 --threads 2
       '

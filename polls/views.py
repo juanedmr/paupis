@@ -1,10 +1,11 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render, get_object_or_404, redirect
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.html import escape
 from django.views import View, generic
-from django.urls import reverse
-
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
+from django.urls import reverse, reverse_lazy
+from .forms import CreateForm
 from .models import Choice,Question
 
 def owner(request):
@@ -24,19 +25,37 @@ def owner(request):
 #     question = get_object_or_404(Question, pk=question_id)
 #     return render(request, 'polls/results.html', {'question': question})
 
-class IndexView(generic.ListView):
-    template_name = 'polls/index.html'
-    context_object_name = 'latest_question_list'
-
-    def get_queryset(self):
-        """Return the last five published questions."""
-        return Question.objects.order_by('-pub_date')[:5]
+class IndexView(ListView):
+    model= Question
+    template_name = "polls/index.html"
 
 
-class DetailView(generic.DetailView):
+class DetailView(DetailView):
     model = Question
-    template_name = 'polls/detail.html'
+    template_name = "polls/poll_detail.html"
 
+class FormView(View):
+    model = Question
+    template_name = 'polls/poll_form.html'
+    success_url = reverse_lazy('polls:all')
+    def get(self, request, pk) :
+        qn = get_object_or_404(Question, id=pk)
+        form = CreateForm(instance=qn)
+        ctx = { 'form': form , 'question':qn.question_text}
+        return render(request, self.template_name, ctx)
+
+    def post(self, request, pk=None) :
+        qn = get_object_or_404(Question, id=pk)
+        form = CreateForm(request.POST, request.FILES or None, instance=qn)
+
+        if not form.is_valid() :
+            ctx = {'form' : form}
+            return render(request, self.template_name, ctx)
+
+        # Add owner to the model before saving
+        qn = form.save(commit=False)
+        qn.save()
+        return redirect(self.success_url)
 
 class ResultsView(generic.DetailView):
     model = Question
