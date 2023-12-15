@@ -13,4 +13,4 @@ social-auth-app-django
 social-auth-core
 django-extensions
 django-taggit
-
+django-fixture-media

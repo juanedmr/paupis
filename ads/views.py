@@ -27,6 +27,7 @@ class AdDetailView(OwnerDetailView):
         x = Ad.objects.get(id=pk)
         comments = Comment.objects.filter(ad=x).order_by('-updated_at')
         comment_form = CommentForm()
+        print(x.text)
         context = { 'ad' : x, 'comments': comments, 'comment_form': comment_form }
         return render(request, self.template_name, context)
 

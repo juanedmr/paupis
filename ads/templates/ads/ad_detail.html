@@ -23,7 +23,7 @@
 {% if ad.content_type %}
 <div id="overlay" class="overlay" style="text-align: center;"
    onclick="document.getElementById('overlay').style.display = 'none';" >
-<img style="width:90%;margin-top: 50px; border:3px solid black;" src="{% url 'ads:ad_picture' ad.id %}">
+<img style="width:90%;margin-top: 50px; border:5px solid pink;" src="{% url 'ads:ad_picture' ad.id %}">
 </div>
 {% endif %}
 
@@ -39,12 +39,12 @@
 
 <h1>{{ ad.title }}</h1>
 {% if ad.content_type %}
-<img style="float:right; max-width:50%;" src="{% url 'ads:ad_picture' ad.id %}"
+<img style="float:right; max-width:50%; border:5px solid pink;" src="{% url 'ads:ad_picture' ad.id %}"
     onclick="document.getElementById('overlay').style.display = 'block';">
 {% endif %}
-<p>
-{{ ad.text }}
-</p>
+
+<div style="max-width:50%; padding-right: 10%;white-space: pre-line;">{{ ad.text }}</div>
+
 
 
 <p>
