@@ -1,12 +1,24 @@
 {% extends 'ads/base_menu.html' %}
 {% block title %}{{ settings.APP_NAME }}{% endblock %}
 {% block content %}
-
+<style>
+    .multicolortext {
+        background-image: linear-gradient(to left, violet, indigo, green, blue, yellow, orange, red);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+</style>
 <form action="{% url 'polls:vote' question.id %}" method="post">
     {% csrf_token %}
     <fieldset>
         <legend>
+            {% if question.id ==8 %}
+                1
+            {% elif %}
             <h1>{{ question.question_text }}</h1>
+            {% endif %}
         </legend>
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
         {% for choice in question.choice_set.all %}
