@@ -5,7 +5,7 @@
     "fields": {
       "question_text": "¿Calor o frío?",
       "label": "Clima",
-      "answer": ""
+      "answer": "frio"
     }
   },
   {
@@ -14,7 +14,7 @@
     "fields": {
       "question_text": "¿Color favorito?",
       "label": "Colores",
-      "answer": ""
+      "answer": "rosa"
     }
   },
   {
@@ -23,7 +23,7 @@
     "fields": {
       "question_text": "¿Película favorita?",
       "label": "Movies",
-      "answer": ""
+      "answer": "alicia en el pais de las maravillas"
     }
   },
   {
@@ -32,7 +32,7 @@
     "fields": {
       "question_text": "¿Pintor favorito?",
       "label": "Pintemos",
-      "answer": ""
+      "answer": "juan lalo"
     }
   },
   {
@@ -41,7 +41,7 @@
     "fields": {
       "question_text": "¿Lugar que te encantaría visitar?",
       "label": "Places to be",
-      "answer": ""
+      "answer": "grecia"
     }
   },
   {
@@ -59,7 +59,7 @@
     "fields": {
       "question_text": "¿Número favorito?",
       "label": "Números",
-      "answer": ""
+      "answer": "5"
     }
   },
   {
@@ -68,7 +68,7 @@
     "fields": {
       "question_text": "¿Quieres ser mi novia?",
       "label": "Ocho pinocho",
-      "answer": ""
+      "answer": "si"
     }
   },
   {
@@ -86,15 +86,6 @@
     "fields": {
       "question_text": "¿Perros o gatos?",
       "label": "Macotas",
-      "answer": ""
-    }
-  },
-  {
-    "model": "polls.question",
-    "pk": 11,
-    "fields": {
-      "question_text": "¿Película favorita?",
-      "label": "Movies",
       "answer": ""
     }
   }
