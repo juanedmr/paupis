@@ -48,6 +48,7 @@ services:
       context: .
     command: |
       sh -c '
+        python manage.py makemigrations
         python manage.py migrate --noinput
         python manage.py runscript cats_load
         python manage.py loaddata questions
